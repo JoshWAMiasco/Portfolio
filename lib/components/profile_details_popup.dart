@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:portfolio/blocs/navigation_cubit.dart';
 import 'package:portfolio/constants/app_color.dart';
 import 'package:portfolio/constants/app_font.dart';
 import 'package:portfolio/constants/functions.dart';
+import 'package:portfolio/pages/chat_page.dart';
+import 'package:portfolio/pages/education_page.dart';
+import 'package:portfolio/pages/home_page_old.dart';
 
 class ProfileDetailsPopup extends StatefulWidget {
   const ProfileDetailsPopup({
@@ -42,132 +48,131 @@ class _ProfileDetailsPopupState extends State<ProfileDetailsPopup> with SingleTi
         child: ScaleTransition(
           scale: scaleAnimation,
           child: Container(
-            margin: EdgeInsets.fromLTRB(30, 50, 30, MediaQuery.of(context).size.height * 0.2),
+            margin: EdgeInsets.fromLTRB(30, MediaQuery.of(context).size.height * 0.2, 30, MediaQuery.of(context).size.height * 0.4),
             decoration: ShapeDecoration(
               color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
-            child: Container(
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 10),
-                        child: CircleAvatar(
-                          radius: 13,
-                          backgroundColor: AppColor.secondary,
-                          child: const Icon(
-                            Icons.close,
-                            color: Colors.white,
-                            size: 15,
-                          ),
-                        ),
-                      ),
-                    ),
+            child: Stack(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [AppColor.primary, Colors.white]),
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  Image(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    width: double.infinity,
-                    image: const AssetImage('assets/profile.jpg'),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Joshua Miasco',
-                    style: AppFont.bold(color: AppColor.primary, fontSize: 25),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    child: TextButton(
-                      style: TextButton.styleFrom(backgroundColor: AppColor.primary, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                      onPressed: () {
-                        launchURL(context, 'tel://+639993529200');
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                  child: Column(
+                    children: [
+                      Row(
                         children: [
-                          const ImageIcon(
-                            AssetImage('assets/phone_icon.png'),
-                            color: Colors.white,
+                          Container(
+                            height: 80,
+                            width: 80,
+                            decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.white, image: DecorationImage(image: AssetImage('assets/profile.jpg'))),
                           ),
                           const SizedBox(
-                            width: 10,
+                            width: 20,
                           ),
-                          Text(
-                            '+63 999-3529-200',
-                            style: AppFont.bold(
-                              color: Colors.white,
-                              fontSize: 15,
-                            ),
+                          Column(
+                            children: [
+                              Text(
+                                'Joshua Miasco',
+                                style: AppFont.bold(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              Text(
+                                'App Developer',
+                                style: AppFont.bold(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              )
+                            ],
                           )
                         ],
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    child: TextButton(
-                      style: TextButton.styleFrom(backgroundColor: AppColor.primary, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                      onPressed: () {},
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Image(
-                            image: AssetImage('assets/gmail_icon.png'),
-                            height: 25,
-                            width: 25,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'joshua.miasco@gmail.com',
-                            style: AppFont.bold(
-                              color: Colors.white,
-                              fontSize: 15,
-                            ),
-                          )
-                        ],
+                      const SizedBox(
+                        height: 20,
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    child: TextButton(
-                      style: TextButton.styleFrom(backgroundColor: AppColor.primary, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                      onPressed: () {},
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Row(
                         children: [
                           const Icon(
-                            Icons.message_rounded,
+                            Icons.cake_rounded,
                             color: Colors.white,
                           ),
                           const SizedBox(
-                            width: 10,
+                            width: 20,
                           ),
                           Text(
-                            'Chat Here',
-                            style: AppFont.bold(
-                              color: Colors.white,
-                              fontSize: 15,
+                            'May 5, 1997',
+                            style: AppFont.bold(fontSize: 18, color: Colors.black),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Icon(
+                            Icons.school_rounded,
+                            color: Colors.white,
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: Text(
+                              'Computer Engineering Technology',
+                              style: AppFont.bold(fontSize: 18, color: Colors.black),
                             ),
                           )
                         ],
                       ),
-                    ),
+                      Expanded(child: Container()),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.bottomToTop,
+                                child: BlocProvider(
+                                  create: (context) => NavigationCubit(0),
+                                  child: const EducationPage(),
+                                ),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: AppColor.primary,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 3, 10, 3),
+                              child: Text('View My Education', style: AppFont.bold(fontSize: 15, color: Colors.white)),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                ],
-              ),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: GestureDetector(onTap: () => Navigator.pop(context), child: const Icon(Icons.close, color: Colors.white)),
+                ),
+              ],
             ),
           ),
         ),

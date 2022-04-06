@@ -3,20 +3,23 @@ import 'package:portfolio/models/carousel_model.dart';
 class StaticData {
   static List<BannerData> banneData = [
     BannerData(
-      title: 'Experience',
-      description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-      path: 'experience',
+      logo: 'assets/nurseloop_logo.png',
+      title: 'Nurseloop',
+      description: 'Nurseloop is a free-to-download app that lets nurses connect to healthcare facilities..',
+      path: 'nurseloop',
     ),
-    BannerData(title: 'Education', description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium', path: 'education'),
+    //BannerData(title: 'Education', description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium', path: 'education'),
     BannerData(
-      title: 'Skills',
-      description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-      path: 'skill',
+      logo: 'assets/raketship_logo.png',
+      title: 'Raketship',
+      description: 'Raketship is the newest, homegrown on-demand delivery service that utilizes the...',
+      path: 'raketship',
     ),
     BannerData(
-      title: 'Projects',
-      description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium',
-      path: 'projects',
+      logo: 'assets/dentpal_logo.png',
+      title: 'Dentpal',
+      description: 'The leading Online Shopping app in the Dental Industry in Southeast Asia...',
+      path: 'dentpal',
     ),
   ];
   static List<String> experienceImage = [
