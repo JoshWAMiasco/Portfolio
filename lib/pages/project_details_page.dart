@@ -35,7 +35,7 @@ class ProjectDetailsPage extends StatelessWidget {
                         },
                         autoPlay: true,
                         disableCenter: true,
-                        height: MediaQuery.of(context).size.height * 0.55,
+                        height: MediaQuery.of(context).size.height * 0.45,
                         enableInfiniteScroll: true,
                         viewportFraction: 1),
                     items: List.generate(pictures.length, (index) {
@@ -88,7 +88,7 @@ class ProjectDetailsPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 350,
+                      height: 280,
                     ),
                     Align(
                       child: Container(
@@ -215,7 +215,7 @@ class ProjectDetailsPage extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(
-                              height: 80,
+                              height: 220,
                             ),
                           ],
                         ),

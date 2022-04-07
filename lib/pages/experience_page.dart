@@ -141,9 +141,9 @@ class ExperienPage extends StatelessWidget {
                               height: 30,
                             ),
                             const ExperienceCard(
-                              timeline: 'March 2019 - 2021',
+                              timeline: '2019 - 2021',
                               title: 'Maxim Integrated',
-                              details: 'Assign to fix a system issue on production line, also assign to autmate a repeated simple task by creating windows form application',
+                              details: 'Assign to fix a system issue on production line, also assign to automate a repeated simple task by creating windows form application',
                               logo: 'assets/maxim_logo.png',
                               role: 'System Technician',
                             ),
@@ -151,7 +151,7 @@ class ExperienPage extends StatelessWidget {
                               height: 30,
                             ),
                             const ExperienceCard(
-                              timeline: 'March 2019 - 2021',
+                              timeline: 'Nov 2017 - Feb 2018',
                               title: 'Maxim Integrated',
                               details: 'Assist Engineers to their task and support line issue',
                               logo: 'assets/maxim_logo.png',

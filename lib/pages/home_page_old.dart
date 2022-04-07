@@ -101,12 +101,14 @@ class HomePageOld extends StatelessWidget {
                                   image: AssetImage('assets/pastel_background.png'),
                                 ),
                               ),
-                              const Positioned(
+                              Positioned(
                                 bottom: 1,
                                 child: Padding(
                                   padding: EdgeInsets.only(bottom: 100),
                                   child: Image(
-                                    image: AssetImage('assets/profile_background.png'),
+                                    image: AssetImage('assets/joshua_profile.png'),
+                                    height: MediaQuery.of(context).size.height * 0.40,
+                                    width:  MediaQuery.of(context).size.width * 0.65,
                                   ),
                                 ),
                               ),
@@ -261,131 +263,145 @@ class HomePageOld extends StatelessWidget {
                   const SizedBox(
                     height: 25,
                   ),
-                  Image(
-                    width: MediaQuery.of(context).size.width,
-                    image: const AssetImage('assets/wave.png'),
-                    fit: BoxFit.fitWidth,
-                  ),
+                  
                   Container(
-                    height: 250,
-                    padding: const EdgeInsets.all(15),
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(border: Border.all(color: AppColor.primary), gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [AppColor.primary, AppColor.secondary])),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    height: 301,
+                    child: Stack(
                       children: [
-                        Text(
-                          'Contact me @',
-                          style: AppFont.bold(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                          child: TextButton(
-                            style: TextButton.styleFrom(backgroundColor: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                            onPressed: () {
-                              launchURL(context, 'tel://+639993529200');
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            height: 250,
+                            padding: const EdgeInsets.all(15),
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(border: Border.all(color: AppColor.primary), gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [AppColor.primary, AppColor.secondary])),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                ImageIcon(
-                                  const AssetImage('assets/phone_icon.png'),
-                                  color: AppColor.primary,
+                                Text(
+                                  'Contact me @',
+                                  style: AppFont.bold(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
                                 ),
                                 const SizedBox(
-                                  width: 10,
+                                  height: 10,
                                 ),
-                                Text(
-                                  '+63 999-3529-200',
-                                  style: AppFont.bold(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 15,
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(backgroundColor: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                                    onPressed: () {
+                                      launchURL(context, 'tel://+639993529200');
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        ImageIcon(
+                                          const AssetImage('assets/phone_icon.png'),
+                                          color: AppColor.primary,
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          '+63 999-3529-200',
+                                          style: AppFont.bold(
+                                            color: Colors.grey.shade800,
+                                            fontSize: 15,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(backgroundColor: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                                    onPressed: () {
+                                      // String? encodeQueryParameters(Map<String, String> params) {
+                                      //   return params.entries.map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}').join('&');
+                                      // }
+                        
+                                      // final Uri emailLaunchUri = Uri(
+                                      //   scheme: 'mailto',
+                                      //   path: 'joshua.miasco@gmail.com',
+                                      //   query: encodeQueryParameters(<String, String>{'subject': 'Joshua App Portfolio'}),
+                                      // );
+                                      // launchURL(context, emailLaunchUri.toString());
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        const Image(
+                                          image: AssetImage('assets/gmail_icon.png'),
+                                          height: 25,
+                                          width: 25,
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          'joshua.miasco@gmail.com',
+                                          style: AppFont.bold(
+                                            color: Colors.grey.shade800,
+                                            fontSize: 15,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(backgroundColor: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                                    onPressed: () {
+                                      //Navigator.pop(context);
+                                      Navigator.push(
+                                          context,
+                                          PageTransition(
+                                              type: PageTransitionType.leftToRight,
+                                              child: BlocProvider(
+                                                create: (context) => SelectionCubit(''),
+                                                child: ChatPage(),
+                                              )));
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.message_rounded,
+                                          color: AppColor.primary,
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          'Chat Here',
+                                          style: AppFont.bold(
+                                            color: Colors.grey.shade800,
+                                            fontSize: 15,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 )
                               ],
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                          child: TextButton(
-                            style: TextButton.styleFrom(backgroundColor: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                            onPressed: () {
-                              // String? encodeQueryParameters(Map<String, String> params) {
-                              //   return params.entries.map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}').join('&');
-                              // }
-
-                              // final Uri emailLaunchUri = Uri(
-                              //   scheme: 'mailto',
-                              //   path: 'joshua.miasco@gmail.com',
-                              //   query: encodeQueryParameters(<String, String>{'subject': 'Joshua App Portfolio'}),
-                              // );
-                              // launchURL(context, emailLaunchUri.toString());
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Image(
-                                  image: AssetImage('assets/gmail_icon.png'),
-                                  height: 25,
-                                  width: 25,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'joshua.miasco@gmail.com',
-                                  style: AppFont.bold(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 15,
-                                  ),
-                                )
-                              ],
-                            ),
+                        Positioned(
+                          top: 0,
+                          child: Image(
+                            width: MediaQuery.of(context).size.width,
+                            image: const AssetImage('assets/wave.png'),
+                            fit: BoxFit.fitWidth,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                          child: TextButton(
-                            style: TextButton.styleFrom(backgroundColor: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                            onPressed: () {
-                              //Navigator.pop(context);
-                              Navigator.push(
-                                  context,
-                                  PageTransition(
-                                      type: PageTransitionType.leftToRight,
-                                      child: BlocProvider(
-                                        create: (context) => SelectionCubit(''),
-                                        child: ChatPage(),
-                                      )));
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.message_rounded,
-                                  color: AppColor.primary,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Chat Here',
-                                  style: AppFont.bold(
-                                    color: Colors.grey.shade800,
-                                    fontSize: 15,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        )
                       ],
                     ),
                   )

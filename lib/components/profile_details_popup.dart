@@ -70,7 +70,9 @@ class _ProfileDetailsPopupState extends State<ProfileDetailsPopup> with SingleTi
                           Container(
                             height: 80,
                             width: 80,
-                            decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.white, image: DecorationImage(image: AssetImage('assets/profile.jpg'))),
+                            decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.white, image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage('assets/joshua.jpeg'))),
                           ),
                           const SizedBox(
                             width: 20,
